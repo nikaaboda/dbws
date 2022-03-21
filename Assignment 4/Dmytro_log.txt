@@ -1,0 +1,26 @@
+MariaDB [group8]> SELECT U.firstname AS Firstname, U.lastname AS Lastname, COUNT(A.tid) AS "Number of tasks to complete"
+    -> FROM Users U, TAStudents TA, Assigned_To A, Tasks T
+    -> WHERE U.uid = TA.uid AND TA.mnum = A.mnum AND A.tid = T.tid AND T.completed = 0
+    -> GROUP BY U.firstname HAVING COUNT(A.tid) > 0;
++-----------+----------+-----------------------------+
+| Firstname | Lastname | Number of tasks to complete |
++-----------+----------+-----------------------------+
+| Dmytro    | Rudenko  |                           1 |
+| Forrest   | Gump     |                           1 |
+| Frodo     | Baggins  |                           1 |
+| Han       | Solo     |                           3 |
+| Obelix    | Gaul     |                           1 |
+| Ted       | Brooks   |                           1 |
++-----------+----------+-----------------------------+
+6 rows in set (0.002 sec)
+
+MariaDB [group8]> SELECT U.firstname AS Firstname, U.lastname AS Lastname
+    -> FROM Users U, TAStudents TA JOIN TA_For TF ON TA.mnum = TF.mnum
+    -> WHERE U.uid = TA.uid AND TF.courseid = 1;
++-----------+----------+
+| Firstname | Lastname |
++-----------+----------+
+| Asterix   | Gaul     |
+| Obelix    | Gaul     |
++-----------+----------+
+2 rows in set (0.001 sec)

@@ -1,0 +1,48 @@
+MariaDB [group8]> SELECT C.longname AS Coursename, Up.firstname AS Firstname, Up.lastname AS Lastname FROM Users Up, Courses C, Professors P , Teaches T WHERE Up.uid = P.uid AND T.profid = P.profid AND T.courseid = C.courseid;
++-------------------------------------+-----------+----------+
+| Coursename                          | Firstname | Lastname |
++-------------------------------------+-----------+----------+
+| F2020_C021_Modern_Physics           | Stephen   | Hawking  |
+| F2021_UI02_Computer_Graphics        | Frank     | Reynolds |
+| F2021_CM202_Biological_Chemistry    | Severus   | Snape    |
+| S2021_B998_Biology_and_Reproduction | Severus   | Snape    |
+| S2021_B998_Biology_and_Reproduction | Margaret  | Thatcher |
++-------------------------------------+-----------+----------+
+5 rows in set (0.002 sec)
+
+MariaDB [group8]> SELECT C.longname AS Course, COUNT(T.mnum) AS "Number of TAs" FROM Courses C, TA_For T WHERE T.courseid = C.courseid GROUP BY C.longname HAVING COUNT(T.mnum) > 1;
++---------------------------+---------------+
+| Course                    | Number of TAs |
++---------------------------+---------------+
+| F2020_C021_Modern_Physics |             2 |
++---------------------------+---------------+
+1 row in set (0.001 sec)
+
+MariaDB [group8]> SELECT U.uid AS "User ID", U.firstname AS "Firstname", U.lastname AS "Lastname", U.email AS "Email", T.mnum AS "Matriculation Number", T.semester AS "Semester", T.major AS "Major" FROM Users U JOIN TAStudents T ON U.uid = T.uid;
++---------+-----------+----------+-------------------------------------+----------------------+----------+------------------+
+| User ID | Firstname | Lastname | Email                               | Matriculation Number | Semester | Major            |
++---------+-----------+----------+-------------------------------------+----------------------+----------+------------------+
+|       1 | Ted       | Brooks   | t.brooks@email.com                  | 23313512142          |        1 | Computer Science |
+|       3 | Hanah     | Barbara  | h.barbara@email.com                 | 27912983655          |        3 | Mathematics      |
+|      12 | Dmytro    | Rudenko  | d.rudenko@jacobs-university.de      | 30004246             |        3 | Mathematics      |
+|       8 | Frodo     | Baggins  | lordofringz43@gandalfpost.me        | 78418990232          |        5 | Ring Bearing     |
+|       7 | Han       | Solo     | han.solooo@jabahutt-smuggling.com   | 82991289001          |        6 | Smuggling        |
+|       9 | Forrest   | Gump     | mynameisforrestgump@alabamamail.com | 87980882892          |        1 | Running          |
+|       5 | Asterix   | Gaul     | a.gaul@romanmail.com                | 90028892103          |        4 | Physics          |
+|       6 | Obelix    | Gaul     | o.gaul@romanmail.com                | 90028892104          |        4 | Physics          |
++---------+-----------+----------+-------------------------------------+----------------------+----------+------------------+
+8 rows in set (0.001 sec)
+
+MariaDB [group8]> SELECT U.uid AS "UserID", U.firstname AS "Firstname", U.lastname AS "Lastname", U.email AS "Email", TS.mnum AS "Matriculation Number", TS.major AS "Major", C.longname AS "Course", T.contractid AS "Contract Number" FROM Users U JOIN TAStudents TS JOIN TA_For T JOIN Courses C ON U.uid = TS.uid AND TS.mnum = T.mnum AND T.courseid = C.courseid ORDER BY U.uid;
++--------+-----------+----------+-----------------------------------+----------------------+------------------+-------------------------------------+-----------------+
+| UserID | Firstname | Lastname | Email                             | Matriculation Number | Major            | Course                              | Contract Number |
++--------+-----------+----------+-----------------------------------+----------------------+------------------+-------------------------------------+-----------------+
+|      1 | Ted       | Brooks   | t.brooks@email.com                | 23313512142          | Computer Science | F2021_UI02_Computer_Graphics        | 2198723198      |
+|      5 | Asterix   | Gaul     | a.gaul@romanmail.com              | 90028892103          | Physics          | F2020_C021_Modern_Physics           | 2198725412      |
+|      6 | Obelix    | Gaul     | o.gaul@romanmail.com              | 90028892104          | Physics          | F2020_C021_Modern_Physics           | 2198725413      |
+|      7 | Han       | Solo     | han.solooo@jabahutt-smuggling.com | 82991289001          | Smuggling        | S2021_B998_Biology_and_Reproduction | 3121152123      |
+|      8 | Frodo     | Baggins  | lordofringz43@gandalfpost.me      | 78418990232          | Ring Bearing     | F2021_CM202_Biological_Chemistry    | 4545589978      |
++--------+-----------+----------+-----------------------------------+----------------------+------------------+-------------------------------------+-----------------+
+5 rows in set (0.001 sec)
+
+MariaDB [group8]> exit

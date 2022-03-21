@@ -1,0 +1,68 @@
+\documentclass[]{article}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{relsize}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{euscript}
+\usepackage{graphicx}
+\usepackage{caption}
+\graphicspath{ {./images/} }
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+
+
+%opening
+\title{DBWS H/A 5. Description of the design}
+
+\begin{document}
+	
+\maketitle
+
+\subsection*{The CD}
+It was decided to implement the site in a way that matches its purpose: fast and intuitive cooperation between professors and TA students. 
+
+\subsubsection*{The title}
+The natural choice of the title was TALink.
+
+\subsubsection*{The keyphrase}
+The site is a helping tool for TA's and professors for better and easier organization of tasks.
+
+\subsubsection*{The logo}
+We went with this logo:
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=200pt]{logo.png}
+	\captionsetup{labelformat=empty}
+	\label{FIgure}
+\end{figure}
+
+\subsubsection*{Overall look \& feel}
+A rather official website with consequent coloring and layout, so it is intuitive and pleasant to use for professors and TA's. It has to be easy to use from the very first visit(since TA's are constantly changing).
+
+\newpage
+\subsubsection*{Colors}
+For now we decided to go with the following coloring schema:
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=150pt]{coloring_schema.jpeg}
+	\captionsetup{labelformat=empty}
+	\label{FIgure}
+\end{figure}
+\newline
+The colors are arranged from top to bottom: primary, secondary, background. One can already notice that the logo fits into the schema.
+
+\subsubsection*{Fonts}
+Montserrat Font
+
+\subsection*{Description of the layout}
+We do not plan to put much information on the home page, since it is induces extra mental effort. The logo is in the upper-left corner, the meta bar at the top, in the center some items and on the left the navigation bar.
+	
+\end{document}

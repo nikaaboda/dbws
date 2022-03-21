@@ -1,0 +1,46 @@
+mysql> SELECT
+    -> CONCAT(U.firstname, ' ', U.lastname) AS 'TA Full Name',
+    -> TA.mnum as 'TA Matriculation Number',
+    -> C.longname as 'TA Course Name'
+    -> FROM
+    -> Users U,
+    -> TAStudent TA,
+    -> Courses C,
+    -> TA_For TF
+    -> WHERE
+    -> U.uid = TA.uid AND
+    -> TF.courseid = C.courseid AND
+    -> TF.mnum = TA.mnum;
++-------------------+-------------------------+----------------------------------+
+| TA Full Name      | TA Matriculation Number | TA Course Name                   |
++-------------------+-------------------------+----------------------------------+
+| Panthi Bivek      | 30004000                | Introduction to C & C++          |
+| Nikolozi Bodaveli | 30004001                | Introduction to Computer Science |
+| Giorgi Jabishvili | 30004002                | Micro Biology                    |
+| Dmytro Rudenko    | 30004003                | Analysis I                       |
++-------------------+-------------------------+----------------------------------+
+4 rows in set (0.00 sec)
+
+
+mysql> SELECT
+    -> CONCAT(U.firstname, ' ', U.lastname) AS 'Professor Full Name',
+    -> P.profid as 'Professor ID',
+    -> C.longname as 'Professor Course Name'
+    -> FROM
+    -> Users U,
+    -> Professors P,
+    -> Courses C,
+    -> Teaches TCH
+    -> WHERE
+    -> U.uid = P.uid AND
+    -> TCH.courseid = C.courseid AND
+    -> TCH.profid = P.profid;
++-----------------------+--------------+----------------------------------+
+| Professor Full Name   | Professor ID | Professor Course Name            |
++-----------------------+--------------+----------------------------------+
+| Kinga Lipskoch        | 40004000     | Introduction to C & C++          |
+| Juergen Schoenwaelder | 40004001     | Introduction to Computer Science |
+| Mattias Ullrich       | 40004002     | Micro Biology                    |
+| Keivan Mallahi-Karai  | 40004003     | Analysis I                       |
++-----------------------+--------------+----------------------------------+
+4 rows in set (0.00 sec)

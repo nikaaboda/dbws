@@ -1,0 +1,42 @@
+\documentclass[]{article}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{relsize}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{euscript}
+\usepackage{graphicx}
+\usepackage{caption}
+\graphicspath{ {./images/} }
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+
+
+
+%opening
+\title{DBWS H/A 3. Mapping Alternatives}
+
+\begin{document}
+	
+\maketitle
+
+Our ER diagram was extended as follows:
+
+\begin{itemize}
+	\item Added entity table Users
+	\item Added ISA hierarchies (Professor ISA User, TAStudent ISA User)
+	\item Added entity tables Tutorial and Homework
+	\item Added ISA hierarchies (Tutorial ISA Task, Homework ISA Task)
+	\item Added entity table Contracts
+\end{itemize}
+
+We used the usual approach of viewing the subclass table as a separate entity table. In other words, the subclass table is a new table that inherits some of the attributes of the superclass table. Alternatively, we could have represented ISA hierarchies by merging all attributes into one table. In this case, we would have set some of the attributes to NULL in order to represent \textit{belonging} of a subclass to a superclass. However, we are following the idea of not using NULL for now. In our implemented case, the belonging is represented via references.
+	
+	
+\end{document}

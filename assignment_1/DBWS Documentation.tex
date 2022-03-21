@@ -1,0 +1,52 @@
+\documentclass[]{article}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{relsize}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{euscript}
+\usepackage{graphicx}
+\usepackage{caption}
+\graphicspath{ {./images/} }
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\geometry{ landscape, margin=80pt}
+
+
+%opening
+\title{DBWS Home Assignment 1}
+\author{Dmytro Rudenko, Luka Kvavilashvili, Karen Arzumanyan, Nikolozi Bodaveli}
+\begin{document}
+
+\maketitle
+
+
+
+Communication and task delegation between teaching assistants (TA) and professors are spread across different platforms: some professors keep track of tasks and their completion through Excel-like software, send homework solutions and updates to TAs through email, and assign time slots via calendar software. The idea of our product is to bring the solutions to all these problems into one centralized portal.
+\newline
+
+
+Our application is intended to be used by professors and TA. It will be a management tool where professors can delegate tasks to TAs, and coordinate time slots for tutorials and meetings. TAs will be able to provide availability data, monitor and mark their tasks as done, and potentially keep track of their working time.
+\newline 
+
+
+There will be a login page both for TAs and professors. Website login won't be accessible for regular students. When logged in, a TA can see a page with all the courses they are assisting, with necessary details about upcoming tasks (such as homework to be graded) and time slots for upcoming tutorials. When a professor is logged in, they can see a list of the courses they are teaching, as well as the list of TAs for each course respectively. The professor is then able to select a specific course, and view details about the tasks assigned to TAs, such as their progress or completion status. The professors are also able to create new tasks (which must be assigned to at least one student, otherwise, the software will not accept the instructions); in addition, they may provide extra material (e.g., homework solutions for grading), set deadlines for tasks, and set up new tutorials and meeting
+
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=550pt]{ER Diagram.pdf}
+	\captionsetup{labelformat=empty}
+	\caption{ER Diagram}
+	\label{FIgure}
+\end{figure}
+	
+
+\end{document}

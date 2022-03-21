@@ -1,0 +1,39 @@
+mysql> SELECT
+    -> TA.major as 'Major',
+    -> COUNT(*) as 'Number of TAs per major'
+    -> FROM
+    -> TAStudent TA
+    -> GROUP BY
+    -> TA.major;
++------------------------------------------+-------------------------+
+| Major                                    | Number of TAs per major |
++------------------------------------------+-------------------------+
+| Computer Science                         |                       2 |
+| Medicinal Chemistry and Chemical Biology |                       1 |
+| Mathematics                              |                       1 |
++------------------------------------------+-------------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT
+    -> CONCAT(U.firstname, ' ', U.lastname) AS 'TA Full Name',
+    -> TA.mnum as 'TA Matriculation Number',
+    -> T.starttime as 'Tutorial Start time',
+    -> T.endtime as 'Tutorial End time'
+    -> FROM
+    -> Users U,
+    -> TAStudent TA,
+    -> Tutorials T,
+    -> Assigned_To ATO,
+    -> Tasks TK
+    -> WHERE
+    -> U.uid = TA.uid AND
+    -> TA.mnum = ATO.mnum AND
+    -> ATO.tid = TK.tid AND
+    -> T.tid = TK.tid;
++-------------------+-------------------------+---------------------+-------------------+
+| TA Full Name      | TA Matriculation Number | Tutorial Start time | Tutorial End time |
++-------------------+-------------------------+---------------------+-------------------+
+| Nikolozi Bodaveli | 30004001                | 00:11:00            | 00:12:00          |
+| Giorgi Jabishvili | 30004002                | 00:19:00            | 00:20:00          |
++-------------------+-------------------------+---------------------+-------------------+
+2 rows in set (0.00 sec)

@@ -1,0 +1,7 @@
+goaccess sorted_error_log.txt -o error_report.html --log-format='[%^ %d %t.%^ %^] [%^] [%^] [%^ %h:%^] %^: %U, %^: %R' --time-format=%T --date-format='%b %d'
+
+goaccess sorted_access_log.txt -o access_report.html --log-format=COMBINED
+
+cat access_log | grep drudenko > sorted_access_log.txt
+
+cat error_log | grep drudenko > sorted_error_log.txt

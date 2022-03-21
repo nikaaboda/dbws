@@ -1,0 +1,15 @@
+SELECT C.longname AS Coursename, Up.firstname AS Firstname, Up.lastname AS Lastname FROM Users Up, Courses C, Professors P , Teaches T WHERE Up.uid = P.uid AND T.profid = P.profid AND T.courseid = C.courseid;
+
+Select the name of the course, and the firstname and lastname of the professor that is teaching that course.
+
+SELECT C.longname AS Course, COUNT(T.mnum) AS "Number of TAs" FROM Courses C, TA_For T WHERE T.courseid = C.courseid GROUP BY C.longname HAVING COUNT(T.mnum) > 1;
+
+Show the number of TAs for each course that has more than 1 TA.
+
+SELECT U.uid AS "User ID", U.firstname AS "Firstname", U.lastname AS "Lastname", U.email AS "Email", T.mnum AS "Matriculation Number", T.semester AS "Semester", T.major AS "Major" FROM Users U JOIN TAStudents T ON U.uid = T.uid;
+
+Select all of the users that are student TAs.
+
+SELECT U.uid AS "UserID", U.firstname AS "Firstname", U.lastname AS "Lastname", U.email AS "Email", TS.mnum AS "Matriculation Number", TS.major AS "Major", C.longname AS "Course", T.contractid AS "Contract Number" FROM Users U JOIN TAStudents TS JOIN TA_For T JOIN Courses C ON U.uid = TS.uid AND TS.mnum = T.mnum AND T.courseid = C.courseid ORDER BY U.uid;
+
+Select all of the Student TAs and display their designated course and contract id.
